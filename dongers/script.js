@@ -22,7 +22,7 @@ var parts = [0,2,0,0,0,0,0,3,1];
 
 var update = function() {
     ctx.canvas.width  = window.innerWidth;
-    ctx.canvas.height = window.innerHeight*.4;
+    ctx.canvas.height = window.innerHeight*.5;
     ctx.fillStyle="#ffffff";
     ctx.lineWidth = window.innerWidth/260;
     ctx.fillRect(0,0,c.width,c.height);
@@ -51,9 +51,11 @@ var update = function() {
 	    p = mouths;
 	ctx.fillText(p[parts[i]],(i+1)*window.innerWidth/10,window.innerHeight*.25);
 	ctx.fillText("↑",3*window.innerWidth/40 + i*window.innerWidth/10,window.innerHeight*.07);
-	ctx.fillText("↓",5*window.innerWidth/40 + i*window.innerWidth/10,window.innerHeight*.07);
-	ctx.stroke();
+	ctx.fillText("↓",5*window.innerWidth/40 + i*window.innerWidth/10,window.innerHeight*.07);	
     }
+    ctx.font = fontSize*.42+"px Comic Sans MS";
+    ctx.fillText("click arrows above each part to modify",window.innerWidth/2,window.innerHeight*.4);
+    ctx.stroke();
     window.requestAnimationFrame(update);  
 };
 
