@@ -23,7 +23,7 @@ var parts = [0,2,0,0,0,0,0,3,1];
 var update = function() {
     ctx.canvas.width  = window.innerWidth;
     ctx.canvas.height = window.innerHeight*.5;
-    ctx.fillStyle="#ffffff";
+    ctx.fillStyle="#a3a3c3";
     ctx.lineWidth = window.innerWidth/260;
     ctx.fillRect(0,0,c.width,c.height);
     ctx.fillStyle="#000000";
