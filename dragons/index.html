@@ -4,7 +4,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
       $(document).ready(function(){
-        $.get("https://docs.google.com/spreadsheets/d/1vUW3t_AXAOyDM72cpeZgGD1vQhk4Us5vEdTTSXEVdss/pub?gid=742573448&single=true&output=csv", function(data, status){
+        $.ajax({
+          url: "https://docs.google.com/spreadsheets/d/1vUW3t_AXAOyDM72cpeZgGD1vQhk4Us5vEdTTSXEVdss/pub?gid=742573448&single=true&output=csv", 
+          success: function(data, status){
           $("button").click(function(){ 
             var input = new RegExp(document.getElementById("food_name").value,"i");
             var processed_data = data.split("\n").map(function(str) {return str.split(",");});
@@ -13,7 +15,7 @@
                 .map(function(arr) { return "<p>"+arr[0] + " : " + arr[2] + "</p>"});
             console.log(processed_data);
             document.getElementById("result").innerHTML = results.toString().replace(/,/g ,"");
-          });
+          });}
         });
       });
     </script>
