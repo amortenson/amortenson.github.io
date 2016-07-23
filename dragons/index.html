@@ -5,7 +5,7 @@
     <script>
       $(document).ready(function(){
         $.ajax({
-          url: "https://docs.google.com/spreadsheets/d/1vUW3t_AXAOyDM72cpeZgGD1vQhk4Us5vEdTTSXEVdss/pub?gid=742573448&single=true&output=csv", 
+          url: "food_data.csv", 
           success: function(data, status){
           $("button").click(function(){ 
             var input = new RegExp(document.getElementById("food_name").value,"i");
