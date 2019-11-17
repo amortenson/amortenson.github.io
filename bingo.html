@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <title>bingo</title>
+  </head>
+  <body>
+    <center>
+      <div id="form" style="padding-top: 50px;">
+        <form onsubmit="generateBoard()">
+          Enter free space: <input type="text" id="freeSpace">
+          <br>
+          <br>
+          Enter other spaces (seperated by commas):
+          <br>
+          <textarea rows="24" cols="50" id="spaces"></textarea>
+          <br>
+          <br>
+          <button onclick="generateBoard(); return false;">Generate</button>
+      </div>
+      <div id="board">
+      </div>
+    </center>
+  <script>
+    function createTable(tableData) { //somebody make this function not poo
+      var table = document.createElement('table');
+      var tableBody = document.createElement('tbody');
+
+      tableData.forEach(function(rowData) {
+        var row = document.createElement('tr');
+
+        rowData.forEach(function(cellData) {
+          var cell = document.createElement('td');
+          cell.appendChild(document.createTextNode(cellData));
+          row.appendChild(cell);
+        });
+
+        tableBody.appendChild(row);
+      });
+
+      table.appendChild(tableBody);
+      document.body.appendChild(table);
+    }
+
+    function generateBoard() {
+      freeSpaceText = document.getElementById("freeSpace").value;
+      otherText = document
+        .getElementById("spaces")
+        .value
+        .split(",")
+        .map(st => st.trim())
+        .sort(function() {return .5 - Math.random();})
+        .concat(['NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA','NA']);
+      otherText.splice(12, 0, freeSpaceText);
+      var newArr = [];
+      newArr.push(otherText.splice(0,5));
+      newArr.push(otherText.splice(0,5));
+      newArr.push(otherText.splice(0,5));
+      newArr.push(otherText.splice(0,5));
+      newArr.push(otherText.splice(0,5));
+      console.log(newArr);
+      createTable(newArr);
+    }
+</script>
+  </body>
+</html>
